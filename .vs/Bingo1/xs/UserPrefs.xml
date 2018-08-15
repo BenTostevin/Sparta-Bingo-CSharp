@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{DB2840A2-7A1B-4652-858F-06EF9B344BB7}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Bingo1/Bingo.cs">
     <Files>
-      <File FileName="Bingo1/bingo2.cs" Line="4" Column="9" />
-      <File FileName="Bingo1/Bingo.cs" Line="16" Column="1" />
+      <File FileName="Bingo1/bingo2.cs" Line="17" Column="1" />
+      <File FileName="Bingo1/Bingo.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
