@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 namespace Bingo1
 {
@@ -12,6 +13,8 @@ namespace Bingo1
 
             int[] bingoCard = new int[bingo_card_size];
 
+            // Select numbers for your card - Start
+            // Needs a clause to stop the user selecting the same number twice
             for (int i = 0; i < bingoCard.Length; i++)
             {
 
@@ -32,12 +35,14 @@ namespace Bingo1
                         Console.WriteLine("Choose a valid number");
                     }
                 }
-
-
+ 
             }
 
-
             Console.WriteLine("You have selected the following numbers:");
+            // Select numbers for your card - End
+
+
+
 
             for (int i = 0; i < bingoCard.Length; i++)
             {
@@ -78,6 +83,16 @@ namespace Bingo1
                 Console.WriteLine("The {0}th number is {1}", i + 1, remaining_numbers[next_num_index]);
 
                 chosen_nums.Add(remaining_numbers[next_num_index]);
+
+              
+                // Check number is on your card
+                for (int j = 0; j < bingoCard.Length; j++)
+                {
+                    if (bingoCard[j] > 50)
+                    {
+                        Console.WriteLine("Got that!");
+                    }
+                }    
 
 
                 // Removes the randomly selected number
