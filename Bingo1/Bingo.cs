@@ -8,13 +8,34 @@ namespace Bingo1
         {
 
             int number_of_balls = 75;
-            int[] bingoCard = new int[6];
+            int bingo_card_size = 6;
+
+            int[] bingoCard = new int[bingo_card_size];
 
             for (int i = 0; i < bingoCard.Length; i++)
             {
-                Console.Write("Select your {0}th number. ", i+1);
-                bingoCard[i] = int.Parse(Console.ReadLine());
+
+                bool valid_number = false;
+                while (valid_number == false)
+                {
+                    Console.Write("Select your {0}th number: ", i + 1);
+                    int candidate = int.Parse(Console.ReadLine());
+
+                    if ((candidate <= number_of_balls) && (candidate > 0))
+                    {
+                        Console.WriteLine("OK");
+                        bingoCard[i] = candidate;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Choose a valid number");
+                    }
+                }
+
+
             }
+
 
             Console.WriteLine("You have selected the following numbers:");
 
