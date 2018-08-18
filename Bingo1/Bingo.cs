@@ -79,20 +79,22 @@ namespace Bingo1
                 // Randomly selects one of the remaining numbers
                 Random rnd = new Random();
                 int next_num_index = rnd.Next(0, remaining_numbers.Count);
+                //int drawn_ball_number = remaining_numbers[next_num_index];
+
 
                 Console.WriteLine("The {0}th number is {1}", i + 1, remaining_numbers[next_num_index]);
 
                 chosen_nums.Add(remaining_numbers[next_num_index]);
 
-              
+            
                 // Check number is on your card
                 for (int j = 0; j < bingoCard.Length; j++)
                 {
-                    if (bingoCard[j] > 50)
+                    if (bingoCard[j].Equals(remaining_numbers[next_num_index]))
                     {
                         Console.WriteLine("Got that!");
                     }
-                }    
+                }
 
 
                 // Removes the randomly selected number
