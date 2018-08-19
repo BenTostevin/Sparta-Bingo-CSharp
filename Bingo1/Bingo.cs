@@ -9,16 +9,14 @@ namespace Bingo1
         {
             
             int number_of_balls = 75;
-            int bingoCardRows = 3;
-            int bingoCardCols = 3;
+            int segmentSize = 15;
+            int bingoCardRows = 5;
+            int bingoCardCols = 5;
             int bingoCardSize = bingoCardRows * bingoCardCols;
 
-            //int[] list1 = new int[4];
-            //int[] list2 = new int[4];
-            //int[] list3 = new int[4];
-            //int[] list4 = new int[4];
-
             int[,] bingoCard = new int[bingoCardRows, bingoCardCols];
+
+
 
 
             for (var row = 0; row < bingoCardRows; row++)
@@ -31,7 +29,18 @@ namespace Bingo1
 
                         bool alreadyChosen = false;
 
-                        Console.WriteLine("Select your {0}th number", (row * bingoCardCols) + (col + 1));
+                        int nthNumber = (row * bingoCardCols) + (col);
+
+                        double rowD = row;
+                        double colD = col;
+                        double bingoCardRowsD = bingoCardRows;
+                        double nthNumberD = nthNumber;
+
+                        int lowerBound = Convert.ToInt32(((Math.Floor(nthNumberD / bingoCardRowsD)) * segmentSize) + 1);
+                        int upperBound = Convert.ToInt32((Math.Ceiling((nthNumberD + 1) / bingoCardRowsD)) * segmentSize);
+                       
+
+                        Console.WriteLine("Select your {0}th number between {1} and {2}.", nthNumber + 1, lowerBound, upperBound);
                         int candidate = int.Parse(Console.ReadLine());
 
                         // Check number entered has been entered already
@@ -47,7 +56,7 @@ namespace Bingo1
                         }
 
                         // Check what the user entered is valid
-                        if ((candidate <= number_of_balls) && (candidate > 0) && (alreadyChosen == false))
+                        if ((candidate <= upperBound) && (candidate >= lowerBound) && (alreadyChosen == false))
                         {
                             bingoCard[row, col] = candidate;
                             valid_number = true;
