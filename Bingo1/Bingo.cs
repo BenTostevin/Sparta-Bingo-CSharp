@@ -24,10 +24,11 @@ namespace Bingo1
                 for (var col = 0; col < bingoCardCols; col++)
                 {
                     bool valid_number = false;
+
                     while (valid_number == false)
                     {
 
-                        bool alreadyChosen = false;
+                        bool checkChosen = false;
 
                         int nthNumber = (row * bingoCardCols) + (col);
 
@@ -44,19 +45,19 @@ namespace Bingo1
                         int candidate = int.Parse(Console.ReadLine());
 
                         // Check number entered has been entered already
-                        for (var i = 0; i < bingoCardRows; i++)
-                        {
-                            for (var j = 0; j < bingoCardCols; j++)
-                            {
-                                if (bingoCard[i, j].Equals(candidate))
-                                {
-                                    alreadyChosen = true;
-                                }
-                            }
-                        }
+                        //for (var i = 0; i < bingoCardRows; i++)
+                        //{
+                        //    for (var j = 0; j < bingoCardCols; j++)
+                        //    {
+                        //        if (bingoCard[i, j].Equals(candidate))
+                        //        {
+                        //            alreadyChosen = true;
+                        //        }
+                        //    }
+                        //}
 
                         // Check what the user entered is valid
-                        if ((candidate <= upperBound) && (candidate >= lowerBound) && (alreadyChosen == false))
+                        if ((candidate <= upperBound) && (candidate >= lowerBound) && (chosen.alreadyChosen (bingoCardRows, bingoCardCols, bingoCard, candidate) == false))
                         {
                             bingoCard[row, col] = candidate;
                             valid_number = true;
@@ -69,78 +70,6 @@ namespace Bingo1
                 }
             }
                 
-
-            // Number select
-            //int[] bingoCard = new int[bingoCardSize];
-            //for (var i = 0; i < bingoCardSize; i++)
-            //{
-            //    bool valid_number = false;
-            //    while (valid_number == false)
-            //    {
-
-            //        bool alreadyChosen = false;
-
-            //        Console.WriteLine("Select your {0}th number", i + 1);
-            //        int candidate = int.Parse(Console.ReadLine());
-
-            //        // Check number entered has been entered already
-            //        for (int j = 0; j < bingoCard.Length; j++)
-            //        {
-            //            if (bingoCard[j].Equals(candidate))
-            //            {
-            //                alreadyChosen = true;
-            //            }
-            //        }
-
- 
-            //        // Check what the user entered is valid
-            //        if ((candidate <= number_of_balls) && (candidate > 0) && (alreadyChosen == false))
-            //        {
-            //            bingoCard[i] = candidate;
-            //            valid_number = true;
-            //        }
-            //        else
-            //        {
-            //            Console.WriteLine("Number is not valid. Choose again.");
-            //        }
-            //    }
-            //}
-            // Number select
-
-        //    for (var i = 0; i < bingoCardSize; i++)
-        //    {
-        //        bool valid_number = false;
-        //        while (valid_number == false)
-        //        {
-
-        //            bool alreadyChosen = false;
-
-        //            Console.WriteLine("Select your {0}th number", i + 1);
-        //            int candidate = int.Parse(Console.ReadLine());
-
-        //            // Check number entered has been entered already
-        //            for (int j = 0; j < bingoCard.Length; j++)
-        //            {
-        //                if (bingoCard[j].Equals(candidate))
-        //                {
-        //                    alreadyChosen = true;
-        //                }
-        //            }
-
-
-        //            // Check what the user entered is valid
-        //            if ((candidate <= number_of_balls) && (candidate > 0) && (alreadyChosen == false))
-        //            {
-        //                bingoCard[i] = candidate;
-        //                valid_number = true;
-        //            }
-        //            else
-        //            {
-        //                Console.WriteLine("Number is not valid. Choose again.");
-        //            }
-        //        }
-        //    }
-
 
 
 
@@ -208,7 +137,7 @@ namespace Bingo1
 
                 if (ownNumbersCalled == bingoCardSize)
                 {
-                    Console.WriteLine("Game over! It took you {0} turns to win.", score+1);
+                    Console.WriteLine("Game finished! It took you {0} turns to win.", score+1);
                     break;
                 }
 
@@ -218,6 +147,9 @@ namespace Bingo1
 
                 Console.WriteLine("");
             }
+
+
+
         }
     }
 }
