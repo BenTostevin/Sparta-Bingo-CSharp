@@ -9,3 +9,14 @@
 /Users/Tech-A34/Desktop/Sparta/Bingo1/Bingo1/obj/Debug/netcoreapp2.1/Bingo1.AssemblyInfo.cs
 /Users/Tech-A34/Desktop/Sparta/Bingo1/Bingo1/obj/Debug/netcoreapp2.1/Bingo1.dll
 /Users/Tech-A34/Desktop/Sparta/Bingo1/Bingo1/obj/Debug/netcoreapp2.1/Bingo1.pdb
+/Users/tech-a46/Desktop/Core/ServerSide/CSharp/Sparta-Bingo-CSharp/Bingo1/bin/Debug/netcoreapp2.1/Bingo1.deps.json
+/Users/tech-a46/Desktop/Core/ServerSide/CSharp/Sparta-Bingo-CSharp/Bingo1/bin/Debug/netcoreapp2.1/Bingo1.runtimeconfig.json
+/Users/tech-a46/Desktop/Core/ServerSide/CSharp/Sparta-Bingo-CSharp/Bingo1/bin/Debug/netcoreapp2.1/Bingo1.runtimeconfig.dev.json
+/Users/tech-a46/Desktop/Core/ServerSide/CSharp/Sparta-Bingo-CSharp/Bingo1/bin/Debug/netcoreapp2.1/Bingo1.dll
+/Users/tech-a46/Desktop/Core/ServerSide/CSharp/Sparta-Bingo-CSharp/Bingo1/bin/Debug/netcoreapp2.1/Bingo1.pdb
+/Users/tech-a46/Desktop/Core/ServerSide/CSharp/Sparta-Bingo-CSharp/Bingo1/obj/Debug/netcoreapp2.1/Bingo1.csprojResolveAssemblyReference.cache
+/Users/tech-a46/Desktop/Core/ServerSide/CSharp/Sparta-Bingo-CSharp/Bingo1/obj/Debug/netcoreapp2.1/Bingo1.csproj.CoreCompileInputs.cache
+/Users/tech-a46/Desktop/Core/ServerSide/CSharp/Sparta-Bingo-CSharp/Bingo1/obj/Debug/netcoreapp2.1/Bingo1.AssemblyInfoInputs.cache
+/Users/tech-a46/Desktop/Core/ServerSide/CSharp/Sparta-Bingo-CSharp/Bingo1/obj/Debug/netcoreapp2.1/Bingo1.AssemblyInfo.cs
+/Users/tech-a46/Desktop/Core/ServerSide/CSharp/Sparta-Bingo-CSharp/Bingo1/obj/Debug/netcoreapp2.1/Bingo1.dll
+/Users/tech-a46/Desktop/Core/ServerSide/CSharp/Sparta-Bingo-CSharp/Bingo1/obj/Debug/netcoreapp2.1/Bingo1.pdb
