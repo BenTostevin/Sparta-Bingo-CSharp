@@ -7,5 +7,7 @@
 
   <ItemGroup>
     <Compile Remove="Program.cs" />
+    <Compile Remove="MakeBingoCard.cs" />
+    <Compile Remove="bingo2.cs" />
   </ItemGroup>
 </Project>

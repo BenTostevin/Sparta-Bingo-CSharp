@@ -18,7 +18,7 @@ namespace Bingo1
 
 
 
-
+            // Create bingo card by selecting your numbers
             for (var row = 0; row < bingoCardRows; row++)
             {
                 for (var col = 0; col < bingoCardCols; col++)
@@ -28,61 +28,32 @@ namespace Bingo1
                     while (valid_number == false)
                     {
 
-                        bool checkChosen = false;
-
                         int nthNumber = (row * bingoCardCols) + (col);
+                        int lowerBound = bingoMethods.createLowerBound(segmentSize, row, col, bingoCardRows, bingoCardCols);
+                        int upperBound = bingoMethods.createUpperBound(segmentSize, row, col, bingoCardRows, bingoCardCols);    
 
-                        double rowD = row;
-                        double colD = col;
-                        double bingoCardRowsD = bingoCardRows;
-                        double nthNumberD = nthNumber;
-
-                        int lowerBound = Convert.ToInt32(((Math.Floor(nthNumberD / bingoCardRowsD)) * segmentSize) + 1);
-                        int upperBound = Convert.ToInt32((Math.Ceiling((nthNumberD + 1) / bingoCardRowsD)) * segmentSize);
-                       
 
                         Console.WriteLine("Select your {0}th number between {1} and {2}.", nthNumber + 1, lowerBound, upperBound);
                         int candidate = int.Parse(Console.ReadLine());
 
-                        // Check number entered has been entered already
-                        //for (var i = 0; i < bingoCardRows; i++)
-                        //{
-                        //    for (var j = 0; j < bingoCardCols; j++)
-                        //    {
-                        //        if (bingoCard[i, j].Equals(candidate))
-                        //        {
-                        //            alreadyChosen = true;
-                        //        }
-                        //    }
-                        //}
 
-                        // Check what the user entered is valid
-                        if ((candidate <= upperBound) && (candidate >= lowerBound) && (chosen.alreadyChosen (bingoCardRows, bingoCardCols, bingoCard, candidate) == false))
+                        valid_number = bingoMethods.checkValid(candidate, upperBound, lowerBound, bingoCardRows, bingoCardCols, bingoCard);
+                        if (valid_number == true)
                         {
                             bingoCard[row, col] = candidate;
-                            valid_number = true;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Number is not valid. Choose again.");
                         }
                     }
                 }
             }
-                
+
 
 
 
             // Select numbers for your card - End
 
-            Console.WriteLine("You have selected the following numbers:");
-            for (var i = 0; i < bingoCardRows; i++)
-            {
-                for (var j = 0; j < bingoCardCols; j++)
-                {
-                    Console.WriteLine(bingoCard[i,j]);
-                }
-            }
+
+            bingoMethods.confirmCard (bingoCardRows, bingoCardCols, bingoCard);
+
 
 
             // Create array list of 1 to 75 START
@@ -93,6 +64,7 @@ namespace Bingo1
                 remaining_numbers.Add(i);
             }
             // Create array list of 1 to 75 END
+
 
 
             // There will be 75 rounds - a round for each bingo ball
@@ -112,28 +84,17 @@ namespace Bingo1
                 // Randomly selects one of the remaining numbers
                 Random rnd = new Random();
                 int next_num_index = rnd.Next(0, remaining_numbers.Count);
-                //int drawn_ball_number = remaining_numbers[next_num_index];
+                int drawn_ball_number = (int)remaining_numbers[next_num_index];
 
 
-                Console.WriteLine("The {0}th number is {1}", score + 1, remaining_numbers[next_num_index]);
+                Console.WriteLine("The {0}th number is {1}", score + 1, drawn_ball_number);
 
-                chosen_nums.Add(remaining_numbers[next_num_index]);
+                chosen_nums.Add(drawn_ball_number);
 
 
-                // Check number is on your card
-                for (var row = 0; row < bingoCardRows; row++)
-                {
-                    for (var col = 0; col < bingoCardCols; col++)
-                    {
-                        if (bingoCard[row, col].Equals(remaining_numbers[next_num_index]))
-                        {
-                            Console.WriteLine("Got that!");
-                            ownNumbersCalled++;
-                            Console.WriteLine("You have had {0} numbers so far", ownNumbersCalled);
+                // Check the ball that was just drawn against what is on your card
+                ownNumbersCalled = bingoMethods.checkNumberWasCalled (bingoCardRows, bingoCardCols, bingoCard, drawn_ball_number, ownNumbersCalled);
 
-                        }
-                    }
-                }
 
                 if (ownNumbersCalled == bingoCardSize)
                 {
@@ -141,9 +102,8 @@ namespace Bingo1
                     break;
                 }
 
-
                 // Removes the randomly selected number
-                remaining_numbers.Remove(remaining_numbers[next_num_index]);
+                remaining_numbers.Remove(drawn_ball_number);
 
                 Console.WriteLine("");
             }
