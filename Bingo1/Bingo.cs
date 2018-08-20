@@ -3,44 +3,39 @@ using System.Linq;
 using System.Collections;
 namespace Bingo1
 {
-    class BingoGame
+    class Program
     {
+
+
         static void Main(string[] args)
         {
             
-            int number_of_balls = 75;
-            int segmentSize = 15;
-            int bingoCardRows = 5;
-            int bingoCardCols = 5;
-            int bingoCardSize = bingoCardRows * bingoCardCols;
 
-            int[,] bingoCard = new int[bingoCardRows, bingoCardCols];
-
-
+            BingoGame bingoGame = new BingoGame(75, 15, 5, 5);
 
             // Create bingo card by selecting your numbers
-            for (var row = 0; row < bingoCardRows; row++)
+            for (var row = 0; row < bingoGame.bingoCardRows; row++)
             {
-                for (var col = 0; col < bingoCardCols; col++)
+                for (var col = 0; col < bingoGame.bingoCardCols; col++)
                 {
                     bool valid_number = false;
 
                     while (valid_number == false)
                     {
 
-                        int nthNumber = (row * bingoCardCols) + (col);
-                        int lowerBound = bingoMethods.createLowerBound(segmentSize, row, col, bingoCardRows, bingoCardCols);
-                        int upperBound = bingoMethods.createUpperBound(segmentSize, row, col, bingoCardRows, bingoCardCols);    
+                        int nthNumber = (row * bingoGame.bingoCardCols) + (col);
+                        int lowerBound = bingoMethods.createLowerBound(bingoGame.segmentSize, row, col, bingoGame.bingoCardRows, bingoGame.bingoCardCols);
+                        int upperBound = bingoMethods.createUpperBound(bingoGame.segmentSize, row, col, bingoGame.bingoCardRows, bingoGame.bingoCardCols);    
 
 
                         Console.WriteLine("Select your {0}th number between {1} and {2}.", nthNumber + 1, lowerBound, upperBound);
                         int candidate = int.Parse(Console.ReadLine());
 
 
-                        valid_number = bingoMethods.checkValid(candidate, upperBound, lowerBound, bingoCardRows, bingoCardCols, bingoCard);
+                        valid_number = bingoMethods.checkValid(candidate, upperBound, lowerBound, bingoGame.bingoCardRows, bingoGame.bingoCardCols, bingoGame.bingoCard);
                         if (valid_number == true)
                         {
-                            bingoCard[row, col] = candidate;
+                            bingoGame.bingoCard[row, col] = candidate;
                         }
                     }
                 }
@@ -52,23 +47,19 @@ namespace Bingo1
             // Select numbers for your card - End
 
 
-            bingoMethods.confirmCard (bingoCardRows, bingoCardCols, bingoCard);
+            bingoMethods.confirmCard (bingoGame.bingoCardRows, bingoGame.bingoCardCols, bingoGame.bingoCard);
 
 
 
             // Create array list of 1 to 75 START
             ArrayList remaining_numbers = new ArrayList();
 
-            for (int i = 1; i < number_of_balls+1; i++)
+            for (int i = 1; i < bingoGame.numberOfBalls+1; i++)
             {
                 remaining_numbers.Add(i);
             }
             // Create array list of 1 to 75 END
 
-
-
-            // There will be 75 rounds - a round for each bingo ball
-            //int rounds = remaining_numbers.Count;
 
 
             ArrayList chosen_nums = new ArrayList();
@@ -79,7 +70,7 @@ namespace Bingo1
 
 
             // This loop removes one number from the list array for each round
-            for (int score = 0; score < number_of_balls; score++)
+            for (int score = 0; score < bingoGame.numberOfBalls; score++)
             {
                 // Randomly selects one of the remaining numbers
                 Random rnd = new Random();
@@ -93,10 +84,10 @@ namespace Bingo1
 
 
                 // Check the ball that was just drawn against what is on your card
-                ownNumbersCalled = bingoMethods.checkNumberWasCalled (bingoCardRows, bingoCardCols, bingoCard, drawn_ball_number, ownNumbersCalled);
+                ownNumbersCalled = bingoMethods.checkNumberWasCalled (bingoGame.bingoCardRows, bingoGame.bingoCardCols, bingoGame.bingoCard, drawn_ball_number, ownNumbersCalled);
 
 
-                if (ownNumbersCalled == bingoCardSize)
+                if (ownNumbersCalled == bingoGame.bingoCardSize)
                 {
                     Console.WriteLine("Game finished! It took you {0} turns to win.", score+1);
                     break;

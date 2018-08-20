@@ -1,8 +1,10 @@
 ﻿<Properties StartupConfiguration="{DB2840A2-7A1B-4652-858F-06EF9B344BB7}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Bingo1/Bingo.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Bingo1/bingoCard.cs">
     <Files>
-      <File FileName="Bingo1/Bingo.cs" Line="5" Column="2" />
-      <File FileName="Bingo1/bingoMethods.cs" Line="5" Column="6" />
+      <File FileName="Bingo1/Bingo.cs" Line="20" Column="18" />
+      <File FileName="Bingo1/bingoMethods.cs" Line="22" Column="9" />
+      <File FileName="Bingo1/BingoGame.cs" Line="24" Column="10" />
+      <File FileName="Bingo1/bingoCard.cs" Line="4" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
